@@ -51,6 +51,7 @@ class Frontend
 	private function includes()
 	{
 		require_once dirname(__FILE__) . '/class-shortcodes.php';
+		require_once dirname(__FILE__) . '/class-form-ajax.php';
 	}
 
 	/**
@@ -72,6 +73,7 @@ class Frontend
 	protected function instance()
 	{
 		new Shortcode();
+		new FormAjax();
 	}
 
 	/**
@@ -84,20 +86,20 @@ class Frontend
 	 */
 	public function enqueue_scripts($hook)
 	{
+		wp_enqueue_script('jquery');
 		wp_register_style('todo-lists-for-wordpress', TDLW_ASSETS_URL . "/css/frontend.css", TDLW_VERSION);
-		wp_register_script('todo-lists-for-wordpress', TDLW_ASSETS_URL . "/js/frontend/frontend.js", ['jquery', 'wp-util'], TDLW_VERSION, true);
+		wp_register_script('todo-lists-for-wordpress', TDLW_ASSETS_URL . "/js/frontend/frontend.js", ['jquery', 'wp-util'], time(), true);
+		wp_enqueue_style('todo-lists-for-wordpress');
+		wp_enqueue_script('todo-lists-for-wordpress');
 
 		wp_localize_script(
 			'todo-lists-for-wordpress',
 			'tdlw',
 			[
-				'ajaxurl'       			=> site_url() . '/wp-admin/admin-ajax.php',
+				'ajaxurl'       			=> admin_url('admin-ajax.php'),
 				'nonce'         			=> wp_create_nonce('todo-lists-for-wordpress')
 			]
 		);
-
-		wp_enqueue_style('todo-lists-for-wordpress');
-		wp_enqueue_script('todo-lists-for-wordpress');
 	}
 }
 

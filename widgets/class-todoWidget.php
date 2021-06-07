@@ -11,7 +11,6 @@ class TodoWidget extends WP_Widget
         );
     }
 
-
     public function widget($args, $instance)
     {
         echo $args['before_widget'];
@@ -20,7 +19,7 @@ class TodoWidget extends WP_Widget
             echo apply_filters('widget_title', $instance['title']);
             echo $args['after_title'];
             ?>
-            <div class="demowidget <?php echo esc_attr($args['id']); ?>">
+            <div class="todowidget <?php echo esc_attr($args['id']); ?>">
                 <?php echo do_shortcode("[todo_lists]"); ?>
             </div>
         <?php

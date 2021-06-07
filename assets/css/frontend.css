@@ -1,0 +1,15 @@
+.todo-wrapper span{
+    margin-left: 5px;
+}
+.todo-wrapper .single_todo_input{
+    cursor: pointer;
+}
+.todo-wrapper .line{
+    text-decoration: line-through;
+}
+
+.tdlw_submit_button{
+    border: 1px solid grey;
+    margin-right: 10px;
+    border-radius: 5px;
+}
