@@ -47,7 +47,7 @@ class Admin
 	 */
 	public function includes()
 	{
-		require_once plugin_dir_path(__FILE__) . "/class-todoWidget.php";
+		// 
 	}
 
 	private function init_hooks()
@@ -55,12 +55,6 @@ class Admin
 		add_action('admin_init', array($this, 'buffer'), 1);
 		add_action('init', array($this, 'includes'));
 		add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
-		add_action('widgets_init', array($this, 'register_all_widgets'));
-	}
-
-	public function register_all_widgets()
-	{
-		register_widget('TodoWidget');
 	}
 
 	/**

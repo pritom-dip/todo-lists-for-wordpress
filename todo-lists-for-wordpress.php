@@ -216,6 +216,7 @@ final class TodoListsForWordPress
     {
         //core includes
         include_once TDLW_INCLUDES . '/core-functions.php';
+        require_once plugin_dir_path(__FILE__) . "widgets/class-todoWidget.php";
 
         //admin includes
         if ($this->is_request('admin')) {
@@ -237,8 +238,13 @@ final class TodoListsForWordPress
     {
         // Localize our plugin
         add_action('init', array($this, 'localization_setup'));
+        add_action('widgets_init', array($this, 'register_all_widgets'));
     }
 
+    public function register_all_widgets()
+    {
+        register_widget('TodoWidget');
+    }
 
     /**
      * Initialize plugin for localization
