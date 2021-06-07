@@ -47,7 +47,7 @@ class Admin
 	 */
 	public function includes()
 	{
-		require_once dirname(__FILE__) . '/class-widget.php';
+		require_once plugin_dir_path(__FILE__) . "/class-todoWidget.php";
 	}
 
 	private function init_hooks()
@@ -55,8 +55,13 @@ class Admin
 		add_action('admin_init', array($this, 'buffer'), 1);
 		add_action('init', array($this, 'includes'));
 		add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'));
+		add_action('widgets_init', array($this, 'register_all_widgets'));
 	}
 
+	public function register_all_widgets()
+	{
+		register_widget('TodoWidget');
+	}
 
 	/**
 	 * Fire off all the instances
@@ -65,7 +70,7 @@ class Admin
 	 */
 	protected function instance()
 	{
-		new Widget();
+		// 
 	}
 
 	/**
@@ -78,21 +83,13 @@ class Admin
 		ob_start();
 	}
 
-
 	public function enqueue_scripts($hook)
 	{
-		global $post;
-
-		wp_enqueue_media();
-
 		wp_register_style('todo-lists-for-wordpress', TDLW_ASSETS_URL . "/css/admin.css", [], TDLW_VERSION);
 		wp_register_script('todo-lists-for-wordpress', TDLW_ASSETS_URL . "/js/admin/admin.js", ['jquery', 'wp-util'], TDLW_VERSION, true);
 		wp_localize_script('todo-lists-for-wordpress', 'tdlw', ['ajaxurl' => admin_url('admin-ajax.php'), 'nonce' => 'todo-lists-for-wordpress']);
 		wp_enqueue_style('todo-lists-for-wordpress');
 		wp_enqueue_script('todo-lists-for-wordpress');
-
-		wp_enqueue_style('wp-color-picker');
-		wp_enqueue_script('wp-color-picker');
 	}
 }
 

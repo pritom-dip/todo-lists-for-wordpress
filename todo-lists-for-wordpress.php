@@ -31,6 +31,7 @@
  */
 
 // don't call the file directly
+
 if (!defined('ABSPATH')) exit;
 /**
  * Main initiation class
@@ -236,10 +237,8 @@ final class TodoListsForWordPress
     {
         // Localize our plugin
         add_action('init', array($this, 'localization_setup'));
-
-
-        //add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_action_links' ) );
     }
+
 
     /**
      * Initialize plugin for localization
