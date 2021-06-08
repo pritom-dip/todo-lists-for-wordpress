@@ -18,8 +18,10 @@ class Shortcode
         $todos      = get_option('tdlw_todo_lists', true);
         $all_todos  = [];
 
-        if (get_option('tdlw_todo_lists')) {
-            $all_todos = unserialize($todos);
+        $user_id = get_current_user_id();
+        $user_meta = get_user_meta($user_id, 'tdlw_todo_lists', true);
+        if ($user_meta) {
+            $all_todos = unserialize($user_meta);
         }
 
         $option = "on";

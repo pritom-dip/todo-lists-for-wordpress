@@ -39,6 +39,7 @@ window.Project = (function (window, document, $, undefined) {
 			});
 		},
 		updateTodo: function () {
+			console.log('dfgd');
 			const updateInput = $(this);
 			const num = this.id.split('-')[1];
 			const data = {
