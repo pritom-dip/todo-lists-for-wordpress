@@ -88,7 +88,7 @@ class Frontend
 	{
 		wp_enqueue_script('jquery');
 		wp_register_style('todo-lists-for-wordpress', TDLW_ASSETS_URL . "/css/frontend.css", TDLW_VERSION);
-		wp_register_script('todo-lists-for-wordpress', TDLW_ASSETS_URL . "/js/frontend/frontend.js", ['jquery', 'wp-util'], time(), true);
+		wp_register_script('todo-lists-for-wordpress', TDLW_ASSETS_URL . "/js/frontend/frontend.js", ['jquery', 'wp-util'], TDLW_VERSION, true);
 		wp_enqueue_style('todo-lists-for-wordpress');
 		wp_enqueue_script('todo-lists-for-wordpress');
 

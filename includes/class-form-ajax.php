@@ -14,6 +14,12 @@ class FormAjax
 
     public function add_new_todo()
     {
+        if (!wp_verify_nonce($_POST['nonce'], 'todo-lists-for-wordpress')) {
+            wp_send_json_error([
+                'success' => false
+            ]);
+        }
+
         $all_todos   = [];
         $user_id = get_current_user_id();
         $user_meta = get_user_meta($user_id, 'tdlw_todo_lists', true);
@@ -40,6 +46,12 @@ class FormAjax
 
     public function tdlw_update_todo()
     {
+        if (!wp_verify_nonce($_POST['nonce'], 'todo-lists-for-wordpress')) {
+            wp_send_json_error([
+                'success' => false
+            ]);
+        }
+
         $user_id = get_current_user_id();
         $user_meta = get_user_meta($user_id, 'tdlw_todo_lists', true);
         if ($user_meta) {
