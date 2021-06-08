@@ -47,7 +47,8 @@ class Admin
 	 */
 	public function includes()
 	{
-		// 
+		require_once dirname(__FILE__) . '/class-settings-api.php';
+		require_once dirname(__FILE__) . '/class-settings.php';
 	}
 
 	private function init_hooks()
@@ -64,7 +65,7 @@ class Admin
 	 */
 	protected function instance()
 	{
-		// 
+		new Settings();
 	}
 
 	/**
