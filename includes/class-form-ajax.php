@@ -27,7 +27,7 @@ class FormAjax
             $all_todos = unserialize($user_meta);
         }
         $new_todo = [
-            'name' => $_POST['todo'],
+            'name' => sanitize_text_field($_POST['todo']),
             'completed' => 0
         ];
         array_push($all_todos, $new_todo);

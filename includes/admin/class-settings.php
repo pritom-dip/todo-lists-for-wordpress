@@ -97,8 +97,8 @@ class Settings
 
 		$options = get_option('tdlw_settings');
 		if ($options != '') {
-			echo '<p>Place the shortcode and you will get the form.</p>';
-			echo '<h1 style="margin-top: 0px;">[todo_lists]</h1>';
+			echo '<p>' . __("Place the shortcode and you will get the form.", "todo-lists-for-wordpress") . '</p>';
+			echo '<h1 style="margin-top: 0px;">' . __("[todo_lists]", "todo-lists-for-wordpress") . '</h1>';
 		}
 
 		echo '</div>';

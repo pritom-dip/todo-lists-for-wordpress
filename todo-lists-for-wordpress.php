@@ -4,7 +4,7 @@
  * Plugin Name: Todo lists for WordPress
  * Plugin URI:  
  * Description: A todo lists for users
- * Version:     1.0.1
+ * Version:     1.0.0
  * Author:      Pritom Chowdhury Dip
  * Author URI:  http://pritom-dip.web.app/
  * License:     GPLv2+
